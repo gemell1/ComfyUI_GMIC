@@ -44,9 +44,9 @@ class GmicCliWrapper:
             suffix=".png",
             dir=None,
         )
-
-        gmic_cli_command = 'gmic -input {} -{} -output "{}"'.format(
-            inpath, command, outpath)
+        autodash = "" if command.startswith(('-', '+')) else "-"
+        gmic_cli_command = 'gmic -input {} {}{} -output "{}"'.format(
+            inpath, autodash, command, outpath)
         os.system(gmic_cli_command)
 
         image3 = LoadImage.load_image(self, outpath)
