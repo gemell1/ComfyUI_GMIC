@@ -1,9 +1,7 @@
-import io
-import os
 import random
-import tempfile
-
-from PIL import Image
+import shlex
+import subprocess
+from pathlib import Path
 
 import folder_paths
 from nodes import LoadImage, SaveImage
@@ -36,22 +34,28 @@ class GmicCliWrapper:
         self.compress_level = 4
         imgtemp = SaveImage.save_images(self, images)
         fname = imgtemp['ui']['images'][0]['filename']
-        inpath = os.path.join(self.output_dir, fname)
+        temp_dir = Path(self.output_dir)
+        inpath = temp_dir / fname
+        outpath = temp_dir / fname.replace('.png', '-out.png')
+        try:
+            autodash = "" if command.startswith(('-', '+')) else "-"
+            gmic_command_args = shlex.split(autodash + command)
+            subprocess.check_call([
+                'gmic',
+                '-input',
+                inpath,
+            ] + gmic_command_args + [
+                '-output',
+                outpath,
+            ])
+            result_image = LoadImage.load_image(self, str(outpath))
+        finally:
+            if outpath.exists():
+                outpath.unlink()
+            if inpath.exists():
+                inpath.unlink()
 
-        filter_id = command.split(" ")[0]
-        fd, outpath = tempfile.mkstemp(
-            prefix="GMIC--{}".format(filter_id),
-            suffix=".png",
-            dir=None,
-        )
-        autodash = "" if command.startswith(('-', '+')) else "-"
-        gmic_cli_command = 'gmic -input {} {}{} -output "{}"'.format(
-            inpath, autodash, command, outpath)
-        os.system(gmic_cli_command)
-
-        image3 = LoadImage.load_image(self, outpath)
-
-        return (image3[0], )
+        return (result_image[0], )
 
 
 NODE_CLASS_MAPPINGS = {
