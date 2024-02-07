@@ -36,7 +36,7 @@ class GmicCliWrapper:
         self.compress_level = 4
         imgtemp = SaveImage.save_images(self, images)
         fname = imgtemp['ui']['images'][0]['filename']
-        inpath = "{}\{}".format(self.output_dir, fname)
+        inpath = os.path.join(self.output_dir, fname)
 
         filter_id = command.split(" ")[0]
         fd, outpath = tempfile.mkstemp(
