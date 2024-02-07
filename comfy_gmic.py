@@ -33,6 +33,7 @@ class GmicCliWrapper:
     CATEGORY = "filters"
 
     def gmic_filter(self, command, images):
+        self.compress_level = 4
         imgtemp = SaveImage.save_images(self, images)
         fname = imgtemp['ui']['images'][0]['filename']
         inpath = "{}\{}".format(self.output_dir, fname)
@@ -60,4 +61,3 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "GmicCliWrapper": "GMIC Image Processing",
 }
-
