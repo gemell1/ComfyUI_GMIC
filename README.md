@@ -1,29 +1,36 @@
 # G'MIC in ComfyUI
 
-![](./assets/workflow.png)
-## Quick Start
+![](./screenshot--comfyui_gmic.png)
 
-* Install custom node with: `git clone https://github.com/gemelli/ComfyUI_GMIC`  
-or copy [gmic.py](https://github.com/gemelli/ComfyUI_GMIC/raw/main/comfy_gmic.py) file to custom nodes folder
-* Download [G'MIC Command-line interface (CLI)](https://gmic.eu/download.html)
-* Put executable path in your PATH ([how to](https://windowsloop.com/how-to-add-to-windows-path/))
-* Download [G'MIC-Qt stand-alone interface](https://gmic.eu/download.html)
-* Choose a filter and copy the command  
-![](./assets/screenshot.png)
 
-* Paste the command to the custom node
+
+## Features
+
+* Wonderful image-processing suite (effects, filtering, geometric manipulation, image data, color.)
+* Friendly for beginners and power users.
+* On going [documented](https://github.com/gemell1/ComfyUI_GMIC/wiki) workflows.
+
+##  Quick Start
+
+- Install custom node with: `git clone https://github.com/gemell1/ComfyUI_GMIC`
+  or copy [comfy_gmic.py](./comfy_gmic.py) file to custom nodes folder.
+- Download [G'MIC Command-line interface (CLI)](https://gmic.eu/download.html) and [G'MIC-Qt stand-alone interface](https://gmic.eu/download.html).
+- Put executable path in your PATH. ([how to](https://windowsloop.com/how-to-add-to-windows-path/))
+- Drag and drop this [workflow](./workflow.json) to ComfyUi.  
+
+```py
+### Changelog ----------
+- 'March' Breaking changes: please recreate your workflow! 🙏
+    @ G_MIC Qt Node
+    @ Batch Images
+- "Feb" Better cross platform support.
+- "Nov" First upload.
+```
 
 ---
-Tested on Windows10, Comfyui [248aa3e](https://github.com/comfyanonymous/ComfyUI/tree/248aa3e56355d75ac3d8632af769e6c700d9bfac), G'MIC cli 3.2.4
 
-
-**TODO**:  
-[ ] Batch image  
-[ ] Favorites drop-down for easier usage
+Tested on Windows 10, ComfyUI [March 09](https://github.com/comfyanonymous/ComfyUI/tree/a9ee9589b72aa0e2931f1c0705524c56adaee26d), G'MIC (Cli and Qt) 3.3.4
 
 ---
-Other Image Processing ComfyUI custom nodes:  
-* [ComfyUI-Allor](https://github.com/Nourepide/ComfyUI-Allor): ComfyUI plugin for image processing and work with alpha chanel
-* [ComfyUI-post-processing-nodes](https://github.com/EllangoK/ComfyUI-post-processing-nodes): A collection of Post Processing Nodes for ComfyUI, which enable a variety of cool image effects
-* [ComfyI2I](https://github.com/ManglerFTW/ComfyI2I): ComfyI2I is a set of custom nodes for ComfyUI that help with image 2 image functions
-* [ComfyUI\_ImageProcessing](https://github.com/bvhari/ComfyUI_ImageProcessing): ComfyUI custom nodes to apply various image processing techniques
+
+[Other Image Processing ComfyUI custom nodes](https://github.com/gemell1/ComfyUI_GMIC/wiki)
