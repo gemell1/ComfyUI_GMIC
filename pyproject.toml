@@ -1,0 +1,14 @@
+[project]
+name = "comfyui_gmic"
+description = "Nodes:GMIC Image Processing."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/gemell1/ComfyUI_GMIC"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI_GMIC"
+Icon = ""
